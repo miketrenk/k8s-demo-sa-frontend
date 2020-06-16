@@ -5,6 +5,11 @@ node_js:
 cache:
   yarn: true
 
+sudo: required
+
+services:
+  - docker
+
 branches:
   only:
   - master
@@ -12,3 +17,8 @@ branches:
 install: yarn install
 
 script: yarn run build
+
+after_script:
+  - docker build --tag $DOCKER_USERNAME/sentiment-analysis-frontend .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push $DOCKER_USERNAME/sentiment-analysis-frontend
