@@ -20,7 +20,7 @@ class App extends Component {
     };
 
     analyzeSentence() {
-        fetch('http://35.188.194.140:80/sentiment', {
+        fetch('http://34.69.18.12:80/sentiment', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ class App extends Component {
                         <h2>Sentiment Analyser</h2>
                         <TextField ref={ref => this.textField = ref} onKeyUp={this.onEnterPress.bind(this)}
                                    hintText="Type your sentence."/>
-                        <RaisedButton  label="Send" color="green" style={style} onClick={this.analyzeSentence.bind(this)}/>
+                        <RaisedButton  label="Send" style={style} onClick={this.analyzeSentence.bind(this)}/>
                         {polarityComponent}
                     </Paper>
                 </div>
